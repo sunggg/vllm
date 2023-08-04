@@ -179,6 +179,7 @@ class LLMEngine:
     def _init_cache(self) -> None:
         """Profiles the memory usage and initializes the KV cache."""
         # Get the maximum number of blocks that can be allocated on GPU and CPU.
+        """
         num_blocks = self._run_workers(
             "profile_num_available_blocks",
             get_all_outputs=True,
@@ -186,6 +187,8 @@ class LLMEngine:
             gpu_memory_utilization=self.cache_config.gpu_memory_utilization,
             cpu_swap_space=self.cache_config.swap_space_bytes,
         )
+        """
+        num_blocks = [(853, 512)]
 
         # Since we use a shared centralized controller, we take the minimum
         # number of blocks across all workers to make sure all the memory

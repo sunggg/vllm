@@ -82,7 +82,7 @@ class Worker:
         # number of tokens equal to max_num_batched_tokens.
 
         # Enable top-k sampling to reflect the accurate memory usage.
-        vocab_size = self.model.config.vocab_size
+        vocab_size = self.model_config.hf_config.vocab_size
         sampling_params = SamplingParams(top_p=0.99, top_k=vocab_size - 1)
         max_num_batched_tokens = self.scheduler_config.max_num_batched_tokens
         max_num_seqs = self.scheduler_config.max_num_seqs
